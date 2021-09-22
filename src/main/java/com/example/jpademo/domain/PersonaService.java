@@ -16,17 +16,6 @@ public class PersonaService implements PersonaServiceInterface{
     @Autowired
     PersonaRepository personaRepository;
 
-    //List<Persona> personas = new ArrayList<>();
-    //int i=0;
-
-   // public List<Persona> getPersonas() {
-        //return personas;
-   // }
-
-    public void setPersonas(List<Persona> personas) {
-        //this.personas = personas;
-    }
-
     public void añadir (Persona persona){
         System.out.println("Entrando a add Persona");
         personaRepository.save(persona);
@@ -60,11 +49,9 @@ public class PersonaService implements PersonaServiceInterface{
 
     public void borrar(int id){
         personaRepository.deleteById(id);
-        //personas.remove(id);
     }
 
     public Persona getid(int id) throws Exception {
-       // return personaRepository.getById(id);
         Persona persona = personaRepository.findById(id).orElseThrow(() -> new Exception("Persona no encontrada"));
         return persona;
     }

@@ -29,7 +29,6 @@ public class PersonaOutputDto {
         if (p == null) {
             return;
         }
-
             setId_persona(p.getId_persona());
             setName(p.getName());
             setUser(p.getUser());

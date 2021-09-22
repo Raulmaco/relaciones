@@ -15,7 +15,6 @@ public class MostrarController {
 
     @Autowired
     PersonaService personaService;
-    PersonaRepository personaRepository;
 
 
     @GetMapping("/id/{id}")
@@ -36,6 +35,5 @@ public class MostrarController {
     public List<PersonaOutputDto> mostrarTodos()
     {
         return personaService.mostrar();
-        //return personaRepository.findAll();
     }
 }

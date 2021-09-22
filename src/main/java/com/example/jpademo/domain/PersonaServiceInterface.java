@@ -7,7 +7,6 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public interface PersonaServiceInterface {
-    public void setPersonas(List<Persona> personas) ;
 
     public void añadir (Persona persona);
 
