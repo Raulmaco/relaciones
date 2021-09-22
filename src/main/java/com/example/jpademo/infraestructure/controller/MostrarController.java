@@ -1,9 +1,9 @@
 package com.example.jpademo.infraestructure.controller;
 
+import com.example.jpademo.application.port.PersonaServiceInterface;
 import com.example.jpademo.domain.Persona;
-import com.example.jpademo.domain.PersonaService;
+import com.example.jpademo.application.PersonaService;
 import com.example.jpademo.infraestructure.controller.dto.output.PersonaOutputDto;
-import com.example.jpademo.infraestructure.repository.PersonaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,10 +14,10 @@ import java.util.List;
 public class MostrarController {
 
     @Autowired
-    PersonaService personaService;
+    PersonaServiceInterface personaService;
 
 
-    @GetMapping("/id/{id}")
+    @GetMapping("{id}")
     public PersonaOutputDto getId(@PathVariable Integer id) throws Exception {
 
 
@@ -31,7 +31,7 @@ public class MostrarController {
         return personaService.getByNombre(nombre);
     }
 
-    @GetMapping("/mostrar")
+    @GetMapping("")
     public List<PersonaOutputDto> mostrarTodos()
     {
         return personaService.mostrar();

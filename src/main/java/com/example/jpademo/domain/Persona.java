@@ -53,17 +53,23 @@ public class Persona {
     }
 
     public Persona(PersonaInputDto personaInputDto) {
-        this.user = personaInputDto.user;
-        this.password = personaInputDto.password;
-        this.name = personaInputDto.name;
-        this.surname = personaInputDto.surname;
-        this.company_email = personaInputDto.company_email;
-        this.personal_email = personaInputDto.personal_email;
-        this.city = personaInputDto.city;
-        this.active = personaInputDto.active;
-        this.create_date  = personaInputDto.create_date;
-        this.imagen_url = personaInputDto.imagen_url;
-        this.termination_date = personaInputDto.termination_date;
+        setPersona(personaInputDto);
 
+    }
+
+    public void setPersona(PersonaInputDto personaInputDto){
+        if (personaInputDto==null)
+            return;
+        if (personaInputDto.user!=null)              this.user = personaInputDto.user;
+        if (personaInputDto.password!=null)          this.password = personaInputDto.password;
+        if (personaInputDto.name!=null)              this.name = personaInputDto.name;
+        if (personaInputDto.surname!=null)           this.surname = personaInputDto.surname;
+        if (personaInputDto.company_email!=null)     this.company_email = personaInputDto.company_email;
+        if (personaInputDto.personal_email!=null)    this.personal_email = personaInputDto.personal_email;
+        if (personaInputDto.city!=null)              this.city = personaInputDto.city;
+        if (personaInputDto.active!=null)            this.active = personaInputDto.active;
+        if (personaInputDto.create_date!=null)       this.create_date  = personaInputDto.create_date;
+        if (personaInputDto.imagen_url!=null)        this.imagen_url = personaInputDto.imagen_url;
+        if (personaInputDto.termination_date!=null)  this.termination_date = personaInputDto.termination_date;
     }
 }

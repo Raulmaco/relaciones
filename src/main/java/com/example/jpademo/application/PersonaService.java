@@ -1,6 +1,8 @@
-package com.example.jpademo.domain;
+package com.example.jpademo.application;
 
 
+import com.example.jpademo.application.port.PersonaServiceInterface;
+import com.example.jpademo.domain.Persona;
 import com.example.jpademo.infraestructure.controller.dto.input.PersonaInputDto;
 import com.example.jpademo.infraestructure.controller.dto.output.PersonaOutputDto;
 import com.example.jpademo.infraestructure.repository.PersonaRepository;
@@ -11,7 +13,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
-public class PersonaService implements PersonaServiceInterface{
+public class PersonaService implements PersonaServiceInterface {
 
     @Autowired
     PersonaRepository personaRepository;
@@ -30,24 +32,14 @@ public class PersonaService implements PersonaServiceInterface{
         return output;
     }
 
-    public void modificar (int id, PersonaInputDto persona)
-    {
-        Persona persona1= personaRepository.getById(id);
-        persona1.setActive(persona.active);
-        persona1.setCity(persona.city);
-        persona1.setPassword(persona.password);
-        persona1.setName(persona.name);
-        persona1.setCompany_email(persona.company_email);
-        persona1.setSurname(persona.surname);
-        persona1.setPersonal_email(persona.personal_email);
-        persona1.setCreate_date(persona.create_date);
-        persona1.setUser(persona.user);
-        persona1.setImagen_url(persona.imagen_url);
-        persona1.setTermination_date(persona.termination_date);
+    public void modificar (int id, PersonaInputDto persona) throws Exception {
+        Persona persona1= personaRepository.findById(id).orElseThrow(() -> new Exception("No existe una persona con ese ID"));
+        persona1.setPersona(persona);
         personaRepository.save(persona1);
     }
 
-    public void borrar(int id){
+    public void borrar(int id) throws Exception {
+        personaRepository.findById(id).orElseThrow(() -> new Exception("No existe una persona con ese ID"));
         personaRepository.deleteById(id);
     }
 

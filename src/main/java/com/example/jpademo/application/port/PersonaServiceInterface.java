@@ -1,5 +1,6 @@
-package com.example.jpademo.domain;
+package com.example.jpademo.application.port;
 
+import com.example.jpademo.domain.Persona;
 import com.example.jpademo.infraestructure.controller.dto.input.PersonaInputDto;
 import com.example.jpademo.infraestructure.controller.dto.output.PersonaOutputDto;
 
@@ -12,9 +13,9 @@ public interface PersonaServiceInterface {
 
     public PersonaOutputDto añadirDto (PersonaInputDto personaInputDTO);
 
-    public void modificar (int id, PersonaInputDto persona);
+    public void modificar (int id, PersonaInputDto persona) throws Exception;
 
-    public void borrar(int id);
+    public void borrar(int id) throws Exception;
 
     public Persona getid(int id) throws Exception;
 
