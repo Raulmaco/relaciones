@@ -4,6 +4,14 @@ package com.example.jpademo.domain;
 import com.example.jpademo.infraestructure.controller.dto.input.PersonaInputDto;
 import lombok.*;
 
+
+
+
+import org.hibernate.validator.constraints.Length;
+import javax.validation.constraints.Email;
+
+
+
 import javax.persistence.*;
 import java.util.Date;
 
@@ -13,20 +21,32 @@ import java.util.Date;
 public class Persona {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public int id_persona;
+    int id_persona;
 
-    @Column
-    public String user;
-    public String password;
-    public String name;
-    public String surname;
-    public String company_email;
-    public String personal_email;
-    public String city;
-    public Boolean active;
-    public Date create_date;
-    public String imagen_url;
-    public Date termination_date;
+    @Length(min = 6,max = 10, message = "The field must be at least 6 characters and at less 50")
+    String user;
+    @Column(nullable = false)
+    String password;
+    @Column(nullable = false)
+    String name;
+
+    String surname;
+
+    @Column(nullable = false)
+    @Email(message = "No valido")
+    String company_email;
+
+    @Column(nullable = false)
+    @Email(message = "No valido")
+    String personal_email;
+    @Column(nullable = false)
+    String city;
+    @Column(nullable = false)
+    Boolean active;
+    @Column(nullable = false)
+    Date create_date;
+    String imagen_url;
+    Date termination_date;
 
     public Persona() {
 

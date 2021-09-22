@@ -38,9 +38,9 @@ public class PersonaOutputDto {
             setPersonal_email(p.getPersonal_email());
             setCity(p.getCity());
             setActive(p.getActive());
-            setCreate_date(p.create_date);
+            setCreate_date(p.getCreate_date());
             setImagen_url(p.getImagen_url());
-            setTermination_date(p.termination_date);
+            setTermination_date(p.getTermination_date());
 
     }
 
