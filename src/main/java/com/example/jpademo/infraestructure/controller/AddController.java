@@ -23,7 +23,6 @@ public class AddController {
     @PostMapping("")
     public PersonaOutputDto añadePersona(@Valid @RequestBody PersonaInputDto personaInputDTO, Errors errors) throws UnprocessableException {
         if(errors.hasErrors()){
-            System.out.println("HOLA");
             throw new UnprocessableException("Persona no válida");
         }
         return personaService.añadirDto(personaInputDTO);
