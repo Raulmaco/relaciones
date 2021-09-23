@@ -5,9 +5,11 @@ import com.example.jpademo.application.port.PersonaServiceInterface;
 import com.example.jpademo.domain.Persona;
 import com.example.jpademo.infraestructure.controller.dto.input.PersonaInputDto;
 import com.example.jpademo.infraestructure.controller.dto.output.PersonaOutputDto;
+import com.example.jpademo.infraestructure.exceptions.NotFoundException;
 import com.example.jpademo.infraestructure.repository.PersonaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.NotAcceptableStatusException;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -32,19 +34,19 @@ public class PersonaService implements PersonaServiceInterface {
         return output;
     }
 
-    public void modificar (int id, PersonaInputDto persona) throws Exception {
-        Persona persona1= personaRepository.findById(id).orElseThrow(() -> new Exception("No existe una persona con ese ID"));
+    public void modificar (int id, PersonaInputDto persona) throws NotFoundException {
+        Persona persona1= personaRepository.findById(id).orElseThrow(() -> new NotFoundException("No existe una persona con ese ID"));
         persona1.setPersona(persona);
         personaRepository.save(persona1);
     }
 
-    public void borrar(int id) throws Exception {
-        personaRepository.findById(id).orElseThrow(() -> new Exception("No existe una persona con ese ID"));
+    public void borrar(int id) throws NotFoundException {
+        personaRepository.findById(id).orElseThrow(() -> new NotFoundException("No existe una persona con ese ID"));
         personaRepository.deleteById(id);
     }
 
-    public Persona getid(int id) throws Exception {
-        Persona persona = personaRepository.findById(id).orElseThrow(() -> new Exception("Persona no encontrada"));
+    public Persona getid(int id) throws NotFoundException {
+        Persona persona = personaRepository.findById(id).orElseThrow(() -> new NotFoundException("Persona no encontrada"));
         return persona;
     }
 

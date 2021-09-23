@@ -2,6 +2,7 @@ package com.example.jpademo.infraestructure.controller;
 
 import com.example.jpademo.application.PersonaService;
 import com.example.jpademo.application.port.PersonaServiceInterface;
+import javassist.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,7 +15,7 @@ public class BorrarController {
 
 
     @DeleteMapping("{id}")
-    public void borraPersona(@PathVariable Integer id) throws Exception {
+    public void borraPersona(@PathVariable Integer id) throws NotFoundException {
         personaService.borrar(id);
     }
 
