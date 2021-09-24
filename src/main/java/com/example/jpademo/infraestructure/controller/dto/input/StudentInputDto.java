@@ -12,7 +12,7 @@ import java.util.Date;
 
 @Data
 public class StudentInputDto {
-    public Persona persona;
+    public Integer id_persona;
 
     @NotNull
     public Integer num_hours_week;

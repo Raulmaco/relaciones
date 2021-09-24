@@ -3,6 +3,7 @@ package com.example.jpademo.infraestructure.controller.estudiante;
 import com.example.jpademo.application.port.StudentServiceInterface;
 import com.example.jpademo.infraestructure.controller.dto.input.StudentInputDto;
 import com.example.jpademo.infraestructure.controller.dto.output.StudentOutputDto;
+import com.example.jpademo.infraestructure.exceptions.NotFoundException;
 import com.example.jpademo.infraestructure.exceptions.UnprocessableException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.Errors;
@@ -22,7 +23,7 @@ public class StudentAddController {
 
 
     @PostMapping("")
-    public StudentOutputDto añadeStudent(@RequestBody StudentInputDto studentInputDto) {
+    public StudentOutputDto añadeStudent(@RequestBody StudentInputDto studentInputDto) throws NotFoundException {
         System.out.println("la branch1 es : " + studentInputDto.getBranch());
         return studentServiceInterface.añadirDto(studentInputDto);
     }

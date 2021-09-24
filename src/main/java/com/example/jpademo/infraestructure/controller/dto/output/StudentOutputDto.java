@@ -3,36 +3,34 @@ package com.example.jpademo.infraestructure.controller.dto.output;
 import com.example.jpademo.domain.Persona;
 import com.example.jpademo.domain.Profesor;
 import com.example.jpademo.domain.Student;
-import lombok.Data;
+import lombok.*;
 
 import javax.validation.constraints.NotNull;
 
-@Data
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class StudentOutputDto {
 
-    String id_student;
-
-    Persona persona;
-
-    @NotNull
-    Integer num_hours_week;
-
-    String comments;
-
-    Profesor profesor;
-
-    @NotNull
-    String branch;
+   private String id_student;
+   private int id_persona;
+   @NotNull
+   private Integer num_hours_week;
+   private String comments;
+   private Profesor profesor;
+   @NotNull
+   private String branch;
 
     public StudentOutputDto(Student student) {
         if (student == null) {
             return;
         }
-        setId_student(student.getId_student());
-        setPersona(student.getPersona());
-        setNum_hours_week(student.getNum_hours_week());
-        setBranch(student.getBranch());
-        setComments(student.getComments());
-        setProfesor(student.getProfesor());
+        this.setId_student(student.getId_student());
+        this.setId_persona(student.getPersona().getId_persona());
+        this.setNum_hours_week(student.getNum_hours_week());
+        this.setBranch(student.getBranch());
+        this.setComments(student.getComments());
+        this.setProfesor(student.getProfesor());
     }
 }
