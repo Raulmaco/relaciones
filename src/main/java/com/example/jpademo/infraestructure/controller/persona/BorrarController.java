@@ -1,4 +1,4 @@
-package com.example.jpademo.infraestructure.controller;
+package com.example.jpademo.infraestructure.controller.persona;
 
 import com.example.jpademo.application.PersonaService;
 import com.example.jpademo.application.port.PersonaServiceInterface;

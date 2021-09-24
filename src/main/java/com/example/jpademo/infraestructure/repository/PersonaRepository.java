@@ -14,5 +14,3 @@ public interface PersonaRepository extends JpaRepository<Persona, Integer> {
    // public Persona findPersonaById(int id);
 }
 
-
-//#Carencias
