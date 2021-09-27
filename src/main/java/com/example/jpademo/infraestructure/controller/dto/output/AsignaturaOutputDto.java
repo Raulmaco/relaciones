@@ -1,20 +1,13 @@
 package com.example.jpademo.infraestructure.controller.dto.output;
 
 import com.example.jpademo.domain.Asignatura;
-import com.example.jpademo.domain.Profesor;
 import com.example.jpademo.domain.Student;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.Column;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToMany;
-import javax.validation.constraints.NotNull;
 import java.util.*;
-import java.util.stream.Collectors;
-
 @Getter
 @Setter
 @AllArgsConstructor

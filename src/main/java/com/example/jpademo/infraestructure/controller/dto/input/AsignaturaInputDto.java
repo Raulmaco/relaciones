@@ -1,9 +1,7 @@
 package com.example.jpademo.infraestructure.controller.dto.input;
 
-import com.example.jpademo.domain.Student;
 import lombok.Data;
 
-import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.Date;
 import java.util.List;

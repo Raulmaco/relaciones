@@ -1,11 +1,8 @@
 package com.example.jpademo.infraestructure.controller.dto.output;
 
 import com.example.jpademo.domain.Persona;
-import com.example.jpademo.infraestructure.controller.dto.input.PersonaInputDto;
 import lombok.Data;
 
-import javax.persistence.Column;
-import javax.persistence.Id;
 import java.util.Date;
 
 @Data

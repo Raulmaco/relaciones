@@ -9,7 +9,6 @@ import com.example.jpademo.infraestructure.exceptions.NotFoundException;
 import com.example.jpademo.infraestructure.repository.PersonaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.server.NotAcceptableStatusException;
 
 import java.util.List;
 import java.util.stream.Collectors;

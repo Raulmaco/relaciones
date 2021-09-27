@@ -1,16 +1,12 @@
 package com.example.jpademo.domain;
 
 
-import com.example.jpademo.infraestructure.controller.dto.input.PersonaInputDto;
 import com.example.jpademo.infraestructure.controller.dto.input.StudentInputDto;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.hibernate.validator.constraints.Length;
 
 import javax.persistence.*;
-import javax.validation.constraints.Email;
-import java.util.Date;
 
 @Entity
 @Data

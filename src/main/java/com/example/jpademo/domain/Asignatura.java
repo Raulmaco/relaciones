@@ -1,23 +1,25 @@
 package com.example.jpademo.domain;
 
 import com.example.jpademo.infraestructure.controller.dto.input.AsignaturaInputDto;
-import com.example.jpademo.infraestructure.controller.dto.input.StudentInputDto;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 @Entity
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
 @Table(name="asignatura")
 public class Asignatura {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     String id_asignatura;
 
-    @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToMany()
     @JoinColumn(name = "ID_Student")
     List<Student> student;
 

@@ -1,16 +1,12 @@
 package com.example.jpademo.application;
 
-import com.example.jpademo.application.port.PersonaServiceInterface;
 import com.example.jpademo.application.port.StudentServiceInterface;
 import com.example.jpademo.domain.Persona;
 import com.example.jpademo.domain.Profesor;
 import com.example.jpademo.domain.Student;
-import com.example.jpademo.infraestructure.controller.dto.input.PersonaInputDto;
 import com.example.jpademo.infraestructure.controller.dto.input.StudentInputDto;
-import com.example.jpademo.infraestructure.controller.dto.output.PersonaOutputDto;
 import com.example.jpademo.infraestructure.controller.dto.output.StudentOutputDto;
 import com.example.jpademo.infraestructure.exceptions.NotFoundException;
-import com.example.jpademo.infraestructure.repository.PersonaRepository;
 import com.example.jpademo.infraestructure.repository.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

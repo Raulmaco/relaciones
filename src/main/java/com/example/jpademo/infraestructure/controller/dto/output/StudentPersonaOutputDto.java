@@ -1,9 +1,7 @@
 package com.example.jpademo.infraestructure.controller.dto.output;
 
-import com.example.jpademo.application.PersonaService;
 import com.example.jpademo.domain.Persona;
 import com.example.jpademo.domain.Student;
-import com.example.jpademo.infraestructure.controller.estudiante.StudentMostrarController;
 import lombok.*;
 
 import java.util.Date;

@@ -1,6 +1,5 @@
 package com.example.jpademo.infraestructure.controller.estudiante;
 
-import com.example.jpademo.application.port.PersonaServiceInterface;
 import com.example.jpademo.application.port.StudentServiceInterface;
 import javassist.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;

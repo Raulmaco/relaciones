@@ -1,9 +1,7 @@
 package com.example.jpademo.infraestructure.controller.asignatura;
 
 import com.example.jpademo.application.port.AsignaturaServiceInterface;
-import com.example.jpademo.application.port.StudentServiceInterface;
 import com.example.jpademo.infraestructure.controller.dto.input.AsignaturaInputDto;
-import com.example.jpademo.infraestructure.controller.dto.input.StudentInputDto;
 import com.example.jpademo.infraestructure.exceptions.UnprocessableException;
 import javassist.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +25,8 @@ public class AsignaturaModificarController {
         }
         asignaturaServiceInterface.modificar(id,asignaturaInputDto);
     }
+
+
 
 
 }

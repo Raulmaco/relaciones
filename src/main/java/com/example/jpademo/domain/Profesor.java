@@ -1,9 +1,7 @@
 package com.example.jpademo.domain;
 
 
-import com.example.jpademo.infraestructure.controller.dto.input.PersonaInputDto;
 import com.example.jpademo.infraestructure.controller.dto.input.ProfesorInputDto;
-import com.example.jpademo.infraestructure.controller.dto.input.StudentInputDto;
 import lombok.Data;
 
 import javax.persistence.*;

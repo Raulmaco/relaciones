@@ -1,8 +1,6 @@
 package com.example.jpademo.infraestructure.controller.estudiante;
 
-import com.example.jpademo.application.port.PersonaServiceInterface;
 import com.example.jpademo.application.port.StudentServiceInterface;
-import com.example.jpademo.infraestructure.controller.dto.input.PersonaInputDto;
 import com.example.jpademo.infraestructure.controller.dto.input.StudentInputDto;
 import com.example.jpademo.infraestructure.exceptions.UnprocessableException;
 import javassist.NotFoundException;

@@ -6,7 +6,6 @@ import com.example.jpademo.infraestructure.controller.dto.output.AsignaturaOutpu
 import com.example.jpademo.infraestructure.exceptions.NotFoundException;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 public interface AsignaturaServiceInterface {
     public AsignaturaOutputDto añadirDto (AsignaturaInputDto asignaturaInputDto) throws NotFoundException;

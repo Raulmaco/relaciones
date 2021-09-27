@@ -2,17 +2,11 @@ package com.example.jpademo.application;
 
 import com.example.jpademo.application.port.AsignaturaServiceInterface;
 import com.example.jpademo.domain.Asignatura;
-import com.example.jpademo.domain.Persona;
-import com.example.jpademo.domain.Profesor;
 import com.example.jpademo.domain.Student;
 import com.example.jpademo.infraestructure.controller.dto.input.AsignaturaInputDto;
-import com.example.jpademo.infraestructure.controller.dto.input.StudentInputDto;
 import com.example.jpademo.infraestructure.controller.dto.output.AsignaturaOutputDto;
-import com.example.jpademo.infraestructure.controller.dto.output.StudentOutputDto;
 import com.example.jpademo.infraestructure.exceptions.NotFoundException;
 import com.example.jpademo.infraestructure.repository.AsignaturaRepository;
-import com.example.jpademo.infraestructure.repository.StudentRepository;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

@@ -1,7 +1,5 @@
 package com.example.jpademo.infraestructure.controller.dto.output;
 
-import com.example.jpademo.domain.Persona;
-import com.example.jpademo.domain.Profesor;
 import com.example.jpademo.domain.Student;
 import lombok.*;
 
