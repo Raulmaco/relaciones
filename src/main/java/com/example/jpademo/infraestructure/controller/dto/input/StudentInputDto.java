@@ -19,7 +19,7 @@ public class StudentInputDto {
 
     public String comments;
 
-    public Profesor profesor;
+    public String id_profesor;
 
     @NotNull
     public String branch;

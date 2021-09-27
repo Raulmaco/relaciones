@@ -2,6 +2,8 @@ package com.example.jpademo.domain;
 
 
 import com.example.jpademo.infraestructure.controller.dto.input.PersonaInputDto;
+import com.example.jpademo.infraestructure.controller.dto.input.ProfesorInputDto;
+import com.example.jpademo.infraestructure.controller.dto.input.StudentInputDto;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -16,7 +18,7 @@ public class Profesor {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     String id_profesor;
 
-    @OneToOne(cascade = {CascadeType.ALL})
+    @OneToOne()
     @JoinColumn(name = "ID_Persona")
     Persona persona;
 
@@ -26,17 +28,24 @@ public class Profesor {
     @Column(nullable = false)
     String branch;
 
- /*   @OneToMany(mappedBy = "profesor", cascade = CascadeType.ALL)
-    List<Student> studentList = new ArrayList<>();*/
+    @OneToMany(mappedBy = "profesor", cascade = CascadeType.ALL)
+    List<Student> studentList = new ArrayList<>();
 
 
     public Profesor() {
 
     }
-/*
-    public Student(PersonaInputDto personaInputDto) {
-        setPersona(personaInputDto);
+    public Profesor(ProfesorInputDto profesorInputDto, Persona persona) {
+        setProfesor(profesorInputDto, persona);
 
-    }*/
+    }
+
+    public void setProfesor(ProfesorInputDto profesorInputDto, Persona persona){
+        if (profesorInputDto==null)
+            return;
+        if (profesorInputDto.getId_persona()!=null)              this.persona = persona;
+        if (profesorInputDto.getComments()!=null)              this.comments = profesorInputDto.getComments();
+        if (profesorInputDto.getBranch()!=null)     this.branch = profesorInputDto.getBranch();
+    }
 
 }

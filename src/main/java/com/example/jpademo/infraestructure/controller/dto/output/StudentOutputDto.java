@@ -18,7 +18,7 @@ public class StudentOutputDto {
    @NotNull
    private Integer num_hours_week;
    private String comments;
-   private Profesor profesor;
+   private String id_profesor;
    @NotNull
    private String branch;
 
@@ -31,6 +31,6 @@ public class StudentOutputDto {
         this.setNum_hours_week(student.getNum_hours_week());
         this.setBranch(student.getBranch());
         this.setComments(student.getComments());
-        this.setProfesor(student.getProfesor());
+        this.setId_profesor(student.getProfesor().getId_profesor());
     }
 }

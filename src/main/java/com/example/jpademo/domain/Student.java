@@ -22,7 +22,7 @@ public class Student {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     String id_student;
 
-    @OneToOne(cascade = {CascadeType.ALL})
+    @OneToOne()
     @JoinColumn(name = "ID_Persona")
     Persona persona;
 
@@ -41,18 +41,18 @@ public class Student {
 
 
 
-   public Student(StudentInputDto studentInputDto, Persona persona) {
-        setStudent(studentInputDto, persona);
+   public Student(StudentInputDto studentInputDto, Persona persona, Profesor profesor) {
+        setStudent(studentInputDto, persona, profesor);
 
     }
 
-    public void setStudent(StudentInputDto studentInputDto, Persona persona){
+    public void setStudent(StudentInputDto studentInputDto, Persona persona, Profesor profesor){
         if (studentInputDto==null)
             return;
         if (studentInputDto.getId_persona()!=null)              this.persona = persona;
         if (studentInputDto.getNum_hours_week()!=null)          this.num_hours_week = studentInputDto.num_hours_week;
         if (studentInputDto.getComments()!=null)              this.comments = studentInputDto.comments;
-        if (studentInputDto.getProfesor()!=null)           this.profesor = studentInputDto.getProfesor();
+        if (studentInputDto.getId_profesor()!=null)           this.profesor = profesor;
         if (studentInputDto.getBranch()!=null)     this.branch = studentInputDto.branch;
     }
 }

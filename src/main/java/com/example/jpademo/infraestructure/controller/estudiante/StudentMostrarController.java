@@ -32,16 +32,11 @@ public class StudentMostrarController {
             return new StudentOutputDto(student);
         }
     }
-/*
-    @GetMapping("/nombre/{nombre}")
-    public List<PersonaOutputDto> putPersona(@PathVariable String nombre)
-    {
-        return personaService.getByNombre(nombre);
-    }
+
 
     @GetMapping("")
-    public List<PersonaOutputDto> mostrarTodos()
+    public List<StudentOutputDto> mostrarTodos()
     {
-        return personaService.mostrar();
-    }*/
+        return studentServiceInterface.mostrar();
+    }
 }

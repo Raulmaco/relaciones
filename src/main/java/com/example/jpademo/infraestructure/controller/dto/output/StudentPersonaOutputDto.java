@@ -41,6 +41,7 @@ public class StudentPersonaOutputDto extends StudentOutputDto{
         setComments(student.getComments());
         setNum_hours_week(student.getNum_hours_week());
         setBranch(student.getBranch());
+        setId_profesor(student.getProfesor().getId_profesor());
 
         setId_persona(p.getId_persona());
         setName(p.getName());
