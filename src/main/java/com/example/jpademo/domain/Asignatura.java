@@ -19,7 +19,7 @@ public class Asignatura {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     String id_asignatura;
 
-    @ManyToMany()
+    @ManyToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "ID_Student")
     List<Student> student;
 

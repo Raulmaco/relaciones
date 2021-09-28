@@ -23,6 +23,14 @@ public class Persona {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     int id_persona;
 
+    @OneToOne()
+    @JoinColumn(name = "id_profesor")
+    Profesor profesor;
+
+    @OneToOne()
+    @JoinColumn(name = "id_student")
+    Student student;
+
     @Length(min = 6,max = 10, message = "The field must be at least 6 characters and at less 50")
     String user;
     @Column(nullable = false)

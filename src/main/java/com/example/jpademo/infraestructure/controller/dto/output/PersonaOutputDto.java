@@ -1,11 +1,15 @@
 package com.example.jpademo.infraestructure.controller.dto.output;
 
 import com.example.jpademo.domain.Persona;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.Date;
 
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class PersonaOutputDto {
 
      int id_persona;

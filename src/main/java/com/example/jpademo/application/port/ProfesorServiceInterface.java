@@ -2,6 +2,7 @@ package com.example.jpademo.application.port;
 
 import com.example.jpademo.domain.Profesor;
 import com.example.jpademo.infraestructure.controller.dto.input.ProfesorInputDto;
+import com.example.jpademo.infraestructure.controller.dto.output.PersonaOutputDto;
 import com.example.jpademo.infraestructure.controller.dto.output.ProfesorOutputDto;
 import com.example.jpademo.infraestructure.exceptions.NotFoundException;
 
@@ -16,6 +17,7 @@ public interface ProfesorServiceInterface {
     public void modificar (String id, ProfesorInputDto profesorInputDto) throws NotFoundException ;
 
     public Profesor getid(String id) throws NotFoundException;
-    public List<ProfesorOutputDto> mostrar();
+    public List<PersonaOutputDto> mostrar();
+    public List<PersonaOutputDto> mostrarSoloPersona();
 
 }

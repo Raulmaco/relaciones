@@ -1,5 +1,6 @@
 package com.example.jpademo.infraestructure.controller.dto.output;
 
+import com.example.jpademo.domain.Persona;
 import com.example.jpademo.domain.Profesor;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -12,7 +13,7 @@ import javax.validation.constraints.NotNull;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class ProfesorOutputDto {
+public class ProfesorOutputDto extends PersonaOutputDto {
 
     private String id_profesor;
     private int id_persona;
@@ -20,10 +21,12 @@ public class ProfesorOutputDto {
     @NotNull
     private String branch;
 
-    public ProfesorOutputDto(Profesor profesor) {
-        if (profesor == null) {
+    public ProfesorOutputDto(Persona persona) {
+        super(persona);
+        if (persona == null) {
             return;
         }
+        Profesor profesor = persona.getProfesor();
         this.setId_profesor(profesor.getId_profesor());
         this.setId_persona(profesor.getPersona().getId_persona());
         this.setBranch(profesor.getBranch());

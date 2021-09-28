@@ -26,9 +26,11 @@ public class AsignaturaOutputDto {
             return;
         }
         List<String> stringList = new ArrayList<>();
-        for (Student p:
-             asignatura.getStudent()) {
-            stringList.add(p.getId_student());
+        if(asignatura.getStudent()!=null) {
+            for (Student p :
+                    asignatura.getStudent()) {
+                stringList.add(p.getId_student());
+            }
         }
         this.setStudent(stringList);
         this.setId_asignatura(asignatura.getId_asignatura());

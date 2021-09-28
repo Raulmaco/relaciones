@@ -6,7 +6,6 @@ import com.example.jpademo.infraestructure.controller.dto.output.PersonaOutputDt
 import javassist.NotFoundException;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 public interface PersonaServiceInterface {
 
@@ -23,4 +22,6 @@ public interface PersonaServiceInterface {
     public List<PersonaOutputDto> getByNombre(String nombre);
 
     public List<PersonaOutputDto> mostrar();
+
+
 }

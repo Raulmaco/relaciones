@@ -28,9 +28,11 @@ public class AsignaturaService implements AsignaturaServiceInterface {
 
     public AsignaturaOutputDto añadirDto (AsignaturaInputDto asignaturaInputDto) throws NotFoundException {
         List<Student> studentList = new ArrayList<>();
-        for (String p: asignaturaInputDto.getId_student()) {
-            Student student = studentService.getid(p);
-            studentList.add(student);
+        if(asignaturaInputDto.getId_student()!=null) {
+            for (String p : asignaturaInputDto.getId_student()) {
+                Student student = studentService.getid(p);
+                studentList.add(student);
+            }
         }
         Asignatura asignatura = new Asignatura(asignaturaInputDto, studentList);
         asignaturaRepository.save(asignatura);
@@ -40,8 +42,13 @@ public class AsignaturaService implements AsignaturaServiceInterface {
 
 
     public void borrar(String id) throws NotFoundException {
-        asignaturaRepository.findById(id).orElseThrow(() -> new NotFoundException("No existe un estudiante con ese ID"));
-        asignaturaRepository.deleteById(id);
+        Asignatura asignatura= asignaturaRepository.findById(id).orElseThrow(() -> new NotFoundException("No existe un estudiante con ese ID"));
+        List<Student> studentList = asignatura.getStudent();
+        if(studentList!=null){
+            throw new NotFoundException("La asignatura tiene algun estudiante matriculado. No puede ser borrada.");
+        }else{
+            asignaturaRepository.deleteById(id);
+        }
     }
 
     public void modificar (String id, AsignaturaInputDto asignaturaInputDto) throws NotFoundException {

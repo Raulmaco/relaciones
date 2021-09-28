@@ -7,6 +7,7 @@ import javax.validation.constraints.NotNull;
 @Data
 public class ProfesorInputDto {
 
+    @NotNull
     Integer id_persona;
 
     String comments;

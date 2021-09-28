@@ -7,6 +7,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Data
@@ -32,22 +33,28 @@ public class Student {
     @JoinColumn(name = "ID_Profesor")
     Profesor profesor;
 
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "id_asignatura")
+    List<Asignatura> asignaturas;
+
+
     @Column()
     String branch;
 
 
 
-   public Student(StudentInputDto studentInputDto, Persona persona, Profesor profesor) {
-        setStudent(studentInputDto, persona, profesor);
+   public Student(StudentInputDto studentInputDto, Persona persona, Profesor profesor, List<Asignatura> asignaturaList) {
+        setStudent(studentInputDto, persona, profesor, asignaturaList);
 
     }
 
-    public void setStudent(StudentInputDto studentInputDto, Persona persona, Profesor profesor){
+    public void setStudent(StudentInputDto studentInputDto, Persona persona, Profesor profesor, List<Asignatura> asignaturaList){
         if (studentInputDto==null)
             return;
         if (studentInputDto.getId_persona()!=null)              this.persona = persona;
         if (studentInputDto.getNum_hours_week()!=null)          this.num_hours_week = studentInputDto.num_hours_week;
         if (studentInputDto.getComments()!=null)              this.comments = studentInputDto.comments;
+        if (studentInputDto.getAsignaturas()!=null)              this.asignaturas = asignaturaList;
         if (studentInputDto.getId_profesor()!=null)           this.profesor = profesor;
         if (studentInputDto.getBranch()!=null)     this.branch = studentInputDto.branch;
     }

@@ -5,6 +5,7 @@ import com.example.jpademo.domain.Persona;
 import com.example.jpademo.domain.Profesor;
 import com.example.jpademo.domain.Student;
 import com.example.jpademo.infraestructure.controller.dto.input.ProfesorInputDto;
+import com.example.jpademo.infraestructure.controller.dto.output.PersonaOutputDto;
 import com.example.jpademo.infraestructure.controller.dto.output.ProfesorOutputDto;
 import com.example.jpademo.infraestructure.exceptions.NotFoundException;
 import com.example.jpademo.infraestructure.repository.ProfesorRepository;
@@ -48,15 +49,26 @@ public class ProfesorService implements ProfesorServiceInterface {
             }
 
         }
-
+        persona.setProfesor(profesor);
         profesorRepository.save(profesor);
-        ProfesorOutputDto output = new ProfesorOutputDto(profesor);
+        ProfesorOutputDto output = new ProfesorOutputDto(persona);
         return output;
     }
 
     public void borrar(String id) throws NotFoundException {
-        profesorRepository.findById(id).orElseThrow(() -> new NotFoundException("No existe un profesor con ese ID"));
-        profesorRepository.deleteById(id);
+        Profesor profesor = profesorRepository.findById(id).orElseThrow(() -> new NotFoundException("No existe un profesor con ese ID"));
+        Persona persona = profesor.getPersona();
+        List<Student> studentList = profesor.getStudentList();
+
+        if(studentList!=null){
+            throw new NotFoundException("El profesor tiene estudiantes asingados. No puede ser borrado.");
+        }else{
+            if(persona!=null){
+                throw new NotFoundException("El profesor tiene una persona asignada. No puede ser borrado");
+            }else{
+                profesorRepository.deleteById(id);
+            }
+        }
     }
 
     public void modificar (String id, ProfesorInputDto profesorInputDto) throws NotFoundException {
@@ -70,8 +82,12 @@ public class ProfesorService implements ProfesorServiceInterface {
         Profesor profesor = profesorRepository.findById(id).orElseThrow(() -> new NotFoundException("No existe un profesor con ese ID"));
         return profesor;
     }
-    public List<ProfesorOutputDto> mostrar(){
-        return profesorRepository.findAll().stream().map( p -> new ProfesorOutputDto(p)).collect(Collectors.toList());
+    public List<PersonaOutputDto> mostrarSoloPersona(){
+        return profesorRepository.findAll().stream().map( p -> new PersonaOutputDto(p.getPersona())).collect(Collectors.toList());
+    }
+
+    public List<PersonaOutputDto> mostrar(){
+        return profesorRepository.findAll().stream().map( p -> new ProfesorOutputDto(p.getPersona())).collect(Collectors.toList());
     }
 
 }
