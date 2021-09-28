@@ -7,6 +7,7 @@ import com.example.jpademo.domain.Student;
 import com.example.jpademo.infraestructure.controller.dto.input.StudentInputDto;
 import com.example.jpademo.infraestructure.controller.dto.output.StudentOutputDto;
 import com.example.jpademo.infraestructure.exceptions.NotFoundException;
+import com.example.jpademo.infraestructure.repository.ProfesorRepository;
 import com.example.jpademo.infraestructure.repository.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -26,14 +27,37 @@ public class StudentService implements StudentServiceInterface {
     @Autowired
     ProfesorService profesorService;
 
+    @Autowired
+    ProfesorRepository profesorRepository;
+
     public StudentOutputDto añadirDto (StudentInputDto studentInputDto) throws NotFoundException{
         Persona persona= personaService.getid(studentInputDto.getId_persona());
         Profesor profesor = profesorService.getid(studentInputDto.getId_profesor());
         Student student = new Student(studentInputDto, persona, profesor);
+
+        List<Student> studentList = studentRepository.findAll().stream().collect(Collectors.toList());
+        for (Student s:
+                studentList) {
+            if(s.getPersona().getId_persona()==studentInputDto.getId_persona()){
+                throw new NotFoundException("Esa persona ya es un estudiante");
+            }
+
+        }
+
+        List<Profesor> profesorList = profesorRepository.findAll().stream().collect(Collectors.toList());
+        for (Profesor p:
+                profesorList) {
+            if(p.getPersona().getId_persona()==studentInputDto.getId_persona()){
+                throw new NotFoundException("Esa persona ya es un profesor");
+            }
+
+        }
+
         studentRepository.save(student);
         StudentOutputDto output = new StudentOutputDto(student);
         return output;
     }
+
 
 
 
