@@ -7,6 +7,7 @@ import com.example.jpademo.infraestructure.controller.dto.input.AsignaturaInputD
 import com.example.jpademo.infraestructure.controller.dto.output.AsignaturaOutputDto;
 import com.example.jpademo.infraestructure.exceptions.NotFoundException;
 import com.example.jpademo.infraestructure.repository.AsignaturaRepository;
+import com.example.jpademo.infraestructure.repository.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -26,6 +27,9 @@ public class AsignaturaService implements AsignaturaServiceInterface {
     @Autowired
     StudentService studentService;
 
+    @Autowired
+    StudentRepository studentRepository;
+
     public AsignaturaOutputDto añadirDto (AsignaturaInputDto asignaturaInputDto) throws NotFoundException {
         List<Student> studentList = new ArrayList<>();
         if(asignaturaInputDto.getId_student()!=null) {
@@ -35,6 +39,14 @@ public class AsignaturaService implements AsignaturaServiceInterface {
             }
         }
         Asignatura asignatura = new Asignatura(asignaturaInputDto, studentList);
+
+        if(studentList!=null) {
+            for (Student student : studentList) {
+                List<Asignatura> asignaturas = student.getAsignaturas();
+                asignaturas.add(asignatura);
+                student.setAsignaturas(asignaturas);
+            }
+        }
         asignaturaRepository.save(asignatura);
         AsignaturaOutputDto output = new AsignaturaOutputDto(asignatura);
         return output;
